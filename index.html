@@ -161,16 +161,28 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 @media (max-width:880px){.about-grid{grid-template-columns:1fr}}
 .prose{display:grid;gap:18px;font-size:1.08rem;max-width:62ch}
 .prose p{color:var(--ink)}
-.objectives{list-style:none;padding:0;margin:0;display:grid;gap:0;border-top:1px solid var(--line)}
-.objectives li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
-.objectives svg{margin-top:2px}
-.objectives li span{color:var(--ink)}
 .facts-mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:28px}
 @media (max-width:560px){.facts-mini{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .facts-mini div{background:var(--night-2);padding:14px 16px;min-width:0}
 .facts-mini dt{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
 .facts-mini dd{margin:4px 0 0;font-weight:600}
 
+.glance{display:grid;gap:14px;align-content:start;padding-top:clamp(0px,4vw,52px)}
+.glance .facts-mini{margin-top:0;grid-template-columns:repeat(2,minmax(0,1fr))}
+.outcomes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+@media (max-width:1040px){.outcomes{grid-template-columns:repeat(6,minmax(0,1fr))}.oc:nth-child(-n+3){grid-column:span 2}.oc:nth-child(n+4){grid-column:span 3}}
+@media (max-width:640px){.outcomes{grid-template-columns:1fr}.outcomes .oc{grid-column:auto}.oc .ill{height:170px}}
+.oc{background:linear-gradient(180deg,var(--panel),var(--night-2));border:1px solid var(--line);border-radius:18px;overflow:hidden;display:grid;grid-template-rows:auto 1fr;min-width:0;transition:transform .2s ease,border-color .2s ease}
+.oc:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent) 55%,var(--line))}
+@media (prefers-reduced-motion: reduce){.oc{transition:none}.oc:hover{transform:none}}
+.oc .ill{height:150px;max-width:100%;padding:14px 12px 8px;background:radial-gradient(120% 90% at 50% 0%,color-mix(in srgb,var(--battery) 10%,transparent),transparent 70%);border-bottom:1px solid var(--line-soft)}
+.oc .ill svg{display:block;width:100%;height:100%}
+.oc .tx{padding:16px 18px 20px;display:grid;gap:6px;align-content:start}
+.oc h3{font-size:1.3rem;line-height:1.05}
+.oc p{font-size:.93rem;color:var(--ink-dim)}
+.split-h{font-size:clamp(1.8rem,3.6vw,2.9rem);display:grid;gap:6px}
+.split-h span{display:block}
+.split-h em{font-style:normal;color:var(--accent);margin-right:.35em}
 /* week rhythm */
 .rhythm{display:grid;gap:22px}
 .rh-row{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;align-items:center}
@@ -352,7 +364,8 @@ footer{padding-block:48px 64px;border-top:1px solid var(--line-soft);margin-top:
     </a>
     <div class="nav-links">
       <a href="#course">Course</a>
-      <a href="#weeks">8 weeks</a>
+      <a href="#outcomes">Outcomes</a>
+      <a href="#weeks">Schedule</a>
       <a href="#game">Market game</a>
       <a href="#speakers">Speakers</a>
       <a href="#project">Project</a>
@@ -376,7 +389,7 @@ footer{padding-block:48px 64px;border-top:1px solid var(--line-soft);margin-top:
         <span class="chip">2 units</span><span class="chip">Tue &amp; Thu</span><span class="chip">8 weeks</span><span class="chip">No prerequisites</span><span class="chip">No exams</span>
       </div>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#weeks">Explore the 8 weeks</a>
+        <a class="btn btn-primary" href="#weeks">View the schedule</a>
         <a class="btn btn-ghost" href="#game">Play the market game</a>
       </div>
     </div>
@@ -425,31 +438,6 @@ footer{padding-block:48px 64px;border-top:1px solid var(--line-soft);margin-top:
 </header>
 <main class="below">
 
-<section class="wrap" aria-label="Why this course, why now">
-  <div class="facts">
-    <div class="fact">
-      <div class="n" style="color:var(--peak)">4.4%<small>→ 12%</small></div>
-      <p>Data centers used 4.4% of U.S. electricity in 2023. DOE projects 6.7% to 12% by 2028.</p>
-      <a class="src" href="https://www.energy.gov/articles/doe-releases-new-report-evaluating-increase-electricity-demand-data-centers" target="_blank" rel="noopener">Source: U.S. DOE ↗</a>
-    </div>
-    <div class="fact">
-      <div class="n" style="color:var(--battery)">18.9<small>GW</small></div>
-      <p>Batteries operating on California's grid as of June 2026, reshaping evening prices.</p>
-      <a class="src" href="https://modoenergy.com/research/en/caiso-battery-buildout-2026" target="_blank" rel="noopener">Source: Modo Energy ↗</a>
-    </div>
-    <div class="fact">
-      <div class="n" style="color:var(--accent)">$333<small>/MW-day</small></div>
-      <p>Record capacity price in PJM's 2027/28 auction, driven largely by data-center demand forecasts.</p>
-      <a class="src" href="https://www.utilitydive.com/news/pjm-interconnection-capacity-auction-data-center/808264/" target="_blank" rel="noopener">Source: Utility Dive ↗</a>
-    </div>
-    <div class="fact">
-      <div class="n">May 2026</div>
-      <p>The western day-ahead electricity market (EDAM) went live, linking California with neighboring utilities.</p>
-      <a class="src" href="https://www.caiso.com/about/news/news-releases/edam-is-live-pacificorp-and-caiso-successfully-launch-new-market-may-1" target="_blank" rel="noopener">Source: CAISO ↗</a>
-    </div>
-  </div>
-</section>
-
 <section class="section" id="course" style="border-top:0">
   <div class="wrap">
     <div class="about-grid">
@@ -463,6 +451,9 @@ footer{padding-block:48px 64px;border-top:1px solid var(--line-soft);margin-top:
           <p>Through real-world examples, you will explore how solar energy, battery storage and changing demand affect prices, and why the timing of electricity use matters for both consumers and the grid. The growing electricity needs of AI and data centers run through the course as a contemporary example.</p>
           <p>Tuesdays combine accessible lectures with hands-on activities using real electricity data. Thursdays bring guest speakers from industry, government and academia who connect the ideas to real decisions. No background in engineering or economics is needed.</p>
         </div>
+              </div>
+      <div class="glance">
+        <div class="eyebrow">At a glance</div>
         <dl class="facts-mini">
           <div><dt>Units</dt><dd>2</dd></div>
           <div><dt>Meets</dt><dd>Tue &amp; Thu, 75 min</dd></div>
@@ -472,10 +463,96 @@ footer{padding-block:48px 64px;border-top:1px solid var(--line-soft);margin-top:
           <div><dt>You need</dt><dd>Algebra and a laptop</dd></div>
         </dl>
       </div>
-      <div>
-        <div class="eyebrow" style="margin-bottom:14px">By the end, you will be able to</div>
-        <ul class="objectives" id="objectives"></ul>
-      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="outcomes">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Learning outcomes</div>
+      <h2>What you'll learn</h2>
+    </div>
+    <div class="outcomes">
+      <article class="oc">
+        <div class="ill"><svg viewBox="0 0 220 130" aria-hidden="true">
+          <line x1="16" y1="112" x2="206" y2="112" style="stroke:var(--line)" stroke-width="1.5"/>
+          <rect x="20" y="106" width="32" height="6" rx="2" style="fill:var(--solar)"/>
+          <rect x="54" y="106" width="24" height="6" rx="2" style="fill:var(--wind)"/>
+          <rect x="80" y="88" width="28" height="24" rx="2" style="fill:var(--hydro)"/>
+          <rect x="110" y="62" width="46" height="50" rx="2" style="fill:var(--gas)"/>
+          <rect x="158" y="18" width="28" height="94" rx="2" style="fill:var(--peak)" opacity=".35"/>
+          <line x1="138" y1="10" x2="138" y2="112" style="stroke:var(--ink)" stroke-width="2"/>
+          <text x="142" y="16" style="fill:var(--ink-dim)" font-family="IBM Plex Mono, monospace" font-size="9">demand</text>
+          <line x1="16" y1="62" x2="138" y2="62" style="stroke:var(--accent)" stroke-width="2" stroke-dasharray="5 4"/>
+          <text x="20" y="56" style="fill:var(--accent)" font-family="IBM Plex Mono, monospace" font-size="9">price</text>
+        </svg></div>
+        <div class="tx"><h3>How electricity markets work</h3><p>Why prices change by the hour and from place to place.</p></div>
+      </article>
+      <article class="oc">
+        <div class="ill"><svg viewBox="0 0 220 130" aria-hidden="true">
+          <g style="stroke:var(--line-soft)" stroke-width="1"><line x1="20" y1="30" x2="204" y2="30"/><line x1="20" y1="60" x2="204" y2="60"/><line x1="20" y1="90" x2="204" y2="90"/></g>
+          <line x1="20" y1="112" x2="204" y2="112" style="stroke:var(--line)" stroke-width="1.5"/>
+          <g style="fill:var(--ink-faint)"><rect x="19" y="112" width="1.5" height="4"/><rect x="65" y="112" width="1.5" height="4"/><rect x="111" y="112" width="1.5" height="4"/><rect x="157" y="112" width="1.5" height="4"/><rect x="203" y="112" width="1.5" height="4"/></g>
+          <path d="M20 74 C40 76 52 66 66 64 S92 76 110 80 S140 70 156 46 S182 40 204 60" fill="none" style="stroke:var(--ink)" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M20 96 C40 98 60 92 80 94 S120 100 150 82 S180 74 204 88" fill="none" style="stroke:var(--battery)" stroke-width="2" stroke-dasharray="4 4"/>
+          <line x1="160" y1="22" x2="160" y2="112" style="stroke:var(--ink-faint)" stroke-width="1"/>
+          <circle cx="160" cy="44" r="5" style="fill:var(--night);stroke:var(--accent)" stroke-width="2.5"/>
+          <rect x="108" y="12" width="46" height="20" rx="5" style="fill:var(--night);stroke:var(--accent)" stroke-width="1"/>
+          <text x="131" y="26" text-anchor="middle" style="fill:var(--ink)" font-family="IBM Plex Mono, monospace" font-size="10">7 PM</text>
+        </svg></div>
+        <div class="tx"><h3>Reading grid data</h3><p>Interpret real data on electricity demand, generation and prices.</p></div>
+      </article>
+      <article class="oc">
+        <div class="ill"><svg viewBox="0 0 220 130" aria-hidden="true">
+          <path d="M16 54 C40 54 56 58 70 72 S100 104 118 102 S150 78 164 42 S192 34 206 46 L206 112 L16 112 Z" style="fill:var(--solar)" opacity=".14"/>
+          <path d="M16 54 C40 54 56 58 70 72 S100 104 118 102 S150 78 164 42 S192 34 206 46" fill="none" style="stroke:var(--ink)" stroke-width="2.6" stroke-linecap="round"/>
+          <line x1="16" y1="112" x2="206" y2="112" style="stroke:var(--line)" stroke-width="1.5"/>
+          <circle cx="110" cy="38" r="11" style="fill:var(--solar)"/>
+          <g style="stroke:var(--solar)" stroke-width="2" stroke-linecap="round"><line x1="110" y1="18" x2="110" y2="22"/><line x1="110" y1="54" x2="110" y2="58"/><line x1="90" y1="38" x2="94" y2="38"/><line x1="126" y1="38" x2="130" y2="38"/><line x1="96" y1="24" x2="99" y2="27"/><line x1="121" y1="49" x2="124" y2="52"/><line x1="124" y1="24" x2="121" y2="27"/><line x1="96" y1="52" x2="99" y2="49"/></g>
+          <rect x="170" y="60" width="26" height="40" rx="4" fill="none" style="stroke:var(--battery)" stroke-width="2.2"/>
+          <rect x="178" y="55" width="10" height="5" rx="1.5" style="fill:var(--battery)"/>
+          <rect x="174" y="78" width="18" height="18" rx="2" style="fill:var(--battery)"/>
+          <path d="M152 92 L166 92" style="stroke:var(--battery)" stroke-width="2" stroke-linecap="round" marker-end="url(#ah3)"/>
+          <defs><marker id="ah3" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" style="fill:var(--battery)"/></marker></defs>
+        </svg></div>
+        <div class="tx"><h3>Solar and batteries</h3><p>How they change the grid's daily pattern and the prices it sees.</p></div>
+      </article>
+      <article class="oc">
+        <div class="ill"><svg viewBox="0 0 220 130" aria-hidden="true">
+          <rect x="18" y="14" width="64" height="98" rx="6" style="fill:var(--night-2);stroke:var(--line)" stroke-width="1.5"/>
+          <rect x="28" y="26" width="30" height="6" rx="2" style="fill:var(--ink-dim)"/>
+          <g style="fill:var(--line)"><rect x="28" y="42" width="44" height="4" rx="2"/><rect x="28" y="52" width="38" height="4" rx="2"/><rect x="28" y="62" width="44" height="4" rx="2"/></g>
+          <rect x="28" y="80" width="44" height="18" rx="3" style="fill:var(--accent)" opacity=".85"/>
+          <text x="50" y="93" text-anchor="middle" style="fill:var(--night)" font-family="IBM Plex Mono, monospace" font-size="10" font-weight="600">$</text>
+          <rect x="96" y="70" width="110" height="24" rx="4" style="fill:var(--night-2);stroke:var(--line)" stroke-width="1"/>
+          <rect x="164" y="70" width="28" height="24" style="fill:var(--peak)" opacity=".28"/>
+          <text x="178" y="64" text-anchor="middle" style="fill:var(--peak)" font-family="IBM Plex Mono, monospace" font-size="8.5">PEAK</text>
+          <rect x="168" y="75" width="18" height="14" rx="2" fill="none" style="stroke:var(--leaf)" stroke-width="1.5" stroke-dasharray="3 2"/>
+          <rect x="112" y="75" width="18" height="14" rx="2" style="fill:var(--leaf)"/>
+          <path d="M166 104 C150 116 134 114 124 98" fill="none" style="stroke:var(--leaf)" stroke-width="2" stroke-linecap="round" marker-end="url(#ah4)"/>
+          <defs><marker id="ah4" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" style="fill:var(--leaf)"/></marker></defs>
+          <g style="fill:var(--ink-faint)" font-family="IBM Plex Mono, monospace" font-size="8"><text x="96" y="108">12a</text><text x="190" y="108">12a</text></g>
+        </svg></div>
+        <div class="tx"><h3>Bills and flexibility</h3><p>How tariffs work, and why the timing of use can lower costs.</p></div>
+      </article>
+      <article class="oc">
+        <div class="ill"><svg viewBox="0 0 220 130" aria-hidden="true">
+          <path d="M16 104 C70 102 110 96 140 78 S186 30 206 16" fill="none" style="stroke:var(--peak)" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="1 0" opacity=".9"/>
+          <line x1="16" y1="112" x2="206" y2="112" style="stroke:var(--line)" stroke-width="1.5"/>
+          <g>
+            <rect x="30" y="40" width="44" height="72" rx="4" style="fill:var(--night-2);stroke:var(--ink-faint)" stroke-width="1.5"/>
+            <rect x="80" y="52" width="44" height="60" rx="4" style="fill:var(--night-2);stroke:var(--ink-faint)" stroke-width="1.5"/>
+            <g style="fill:var(--line)"><rect x="36" y="48" width="32" height="7" rx="1.5"/><rect x="36" y="60" width="32" height="7" rx="1.5"/><rect x="36" y="72" width="32" height="7" rx="1.5"/><rect x="36" y="84" width="32" height="7" rx="1.5"/><rect x="36" y="96" width="32" height="7" rx="1.5"/>
+            <rect x="86" y="60" width="32" height="7" rx="1.5"/><rect x="86" y="72" width="32" height="7" rx="1.5"/><rect x="86" y="84" width="32" height="7" rx="1.5"/><rect x="86" y="96" width="32" height="7" rx="1.5"/></g>
+            <g style="fill:var(--battery)"><circle cx="64" cy="51.5" r="1.6"/><circle cx="64" cy="63.5" r="1.6"/><circle cx="64" cy="75.5" r="1.6"/><circle cx="114" cy="63.5" r="1.6"/><circle cx="114" cy="87.5" r="1.6"/></g>
+            <g style="fill:var(--leaf)"><circle cx="64" cy="87.5" r="1.6"/><circle cx="64" cy="99.5" r="1.6"/><circle cx="114" cy="75.5" r="1.6"/><circle cx="114" cy="99.5" r="1.6"/></g>
+          </g>
+          <g style="stroke:var(--ink-dim)" stroke-width="1.6" fill="none" stroke-linecap="round"><path d="M160 112 L170 50 L180 112"/><path d="M152 62 L188 62"/><path d="M156 74 L184 74"/><path d="M163 88 L177 98 M177 88 L163 98"/></g>
+          <path d="M124 70 Q142 56 152 62" fill="none" style="stroke:var(--ink-faint)" stroke-width="1"/>
+        </svg></div>
+        <div class="tx"><h3>AI and data centers</h3><p>The cost, infrastructure and reliability challenges of fast-growing demand.</p></div>
+      </article>
     </div>
   </div>
 </section>
@@ -483,9 +560,9 @@ footer{padding-block:48px 64px;border-top:1px solid var(--line-soft);margin-top:
 <section class="section">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">A week in the course</div>
-      <h2>Concepts on Tuesday, practice on Thursday</h2>
-      <p>Every class opens with a 10-minute check-in: scan a QR code, answer two or three questions about a short reading, and discuss the answers together. All activities happen in class. There is no homework.</p>
+      <div class="eyebrow">How the week works</div>
+      <h2 class="split-h"><span><em>Tuesdays</em> Concepts and Data</span><span><em>Thursdays</em> Perspectives from the Field</span></h2>
+      <p>Tuesdays introduce the week's core concept through a lecture and a hands-on activity with real electricity data. Thursdays feature guest speakers from industry, government and academia who explain how those concepts apply to real decisions. Every class opens with a short discussion of the reading, and all activities happen in class.</p>
     </div>
     <div class="rhythm">
       <div>
@@ -521,9 +598,9 @@ footer{padding-block:48px 64px;border-top:1px solid var(--line-soft);margin-top:
 <section class="section" id="weeks">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">Curriculum</div>
-      <h2>Eight weeks, from the power plant to the data center</h2>
-      <p>Each week centers on one core idea that every student is expected to understand. Pick a week to see what happens in each class.</p>
+      <div class="eyebrow">Eight weeks · Summer 2027</div>
+      <h2>Course schedule</h2>
+      <p>Each week focuses on one core idea. Select a week to see the topics for its Tuesday and Thursday classes.</p>
     </div>
     <div class="weeks">
       <div class="week-list" role="tablist" aria-label="Weeks" id="week-list"></div>
@@ -564,30 +641,6 @@ footer{padding-block:48px 64px;border-top:1px solid var(--line-soft);margin-top:
         </div>
         <ul class="plants" id="plants" aria-label="Power plants in the auction"></ul>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Hands-on, in class</div>
-      <h2>Learn it with real data</h2>
-      <p>Tuesday activities take about 25 minutes, in pairs, in a spreadsheet. The data is provided. You finish everything in class.</p>
-    </div>
-    <div class="acts">
-      <article class="act">
-        <div class="art"><svg id="art-adopt" viewBox="0 0 320 130" aria-hidden="true"></svg></div>
-        <div class="body"><div class="wtag">Week 1</div><h3>Adopt a day</h3><p>Pick one day on the grid operator's public dashboard and tell its story: the peak hour, solar at noon, and what kept the lights on after sunset.</p></div>
-      </article>
-      <article class="act">
-        <div class="art"><svg id="art-battery" viewBox="0 0 320 130" aria-hidden="true"></svg></div>
-        <div class="body"><div class="wtag">Week 4</div><h3>Run a battery</h3><p>Decide when a battery charges and discharges against a real week of prices. The class compares strategies on a revenue leaderboard.</p></div>
-      </article>
-      <article class="act">
-        <div class="art"><svg id="art-bills" viewBox="0 0 320 130" aria-hidden="true"></svg></div>
-        <div class="body"><div class="wtag">Week 5</div><h3>Two buildings, two bills</h3><p>Two real (anonymized) buildings use the same electricity in a month at different times. Calculate both bills and find out why they differ.</p></div>
-      </article>
     </div>
   </div>
 </section>
@@ -686,8 +739,8 @@ footer{padding-block:48px 64px;border-top:1px solid var(--line-soft);margin-top:
     <canvas id="enroll-bg" aria-hidden="true"></canvas>
     <div class="in">
       <div>
-        <div class="eyebrow" style="color:var(--ink)">Summer 2027</div>
-        <h2 style="margin-top:10px">Find out what your electricity really costs</h2>
+        <div class="eyebrow" style="color:var(--ink)">Enrollment</div>
+        <h2 style="margin-top:10px">Summer 2027</h2>
         <p>Enrollment runs through Stanford Summer Session. Check its site for 2027 dates, application deadlines and the course listing.</p>
       </div>
       <a class="btn btn-primary" href="https://summer.stanford.edu" target="_blank" rel="noopener">Stanford Summer Session ↗</a>
@@ -704,14 +757,8 @@ footer{padding-block:48px 64px;border-top:1px solid var(--line-soft);margin-top:
       <div class="copy-row"><code id="email">nini23@stanford.edu</code><button class="btn btn-ghost btn-sm" type="button" id="copy-email">Copy</button></div>
     </div>
     <div>
-      <p><strong style="color:var(--ink)">Sources for figures on this page</strong></p>
-      <ol>
-        <li><a href="https://www.energy.gov/articles/doe-releases-new-report-evaluating-increase-electricity-demand-data-centers" target="_blank" rel="noopener">U.S. Department of Energy, data-center electricity demand report (Dec 2024)</a></li>
-        <li><a href="https://modoenergy.com/research/en/caiso-battery-buildout-2026" target="_blank" rel="noopener">Modo Energy, CAISO battery buildout, H1 2026</a></li>
-        <li><a href="https://www.utilitydive.com/news/pjm-interconnection-capacity-auction-data-center/808264/" target="_blank" rel="noopener">Utility Dive, PJM capacity auction for 2027/28 (Dec 2025)</a></li>
-        <li><a href="https://www.caiso.com/about/news/news-releases/edam-is-live-pacificorp-and-caiso-successfully-launch-new-market-may-1" target="_blank" rel="noopener">CAISO, EDAM launch (May 2026)</a></li>
-      </ol>
-      <p style="margin-top:10px">Charts and the market game use illustrative values to explain concepts. They are not market data.</p>
+      <p><strong style="color:var(--ink)">About this page</strong></p>
+      <p style="margin-top:8px">Charts and the market game use illustrative values to explain concepts. They are not market data.</p>
     </div>
   </div>
 </footer>
@@ -889,17 +936,6 @@ size();updateSummary();
 if(state.playing)requestAnimationFrame(t=>{last=t;tick(t);});
 document.fonts&&document.fonts.ready.then(()=>draw());
 
-/* ---------- objectives ---------- */
-const objectives=[
- 'Explain how wholesale electricity markets work, including how supply and demand set prices and why prices vary across time and place.',
- 'Analyze real grid data on demand, generation and prices to explain how the electricity system responds to changing conditions.',
- 'Explain how renewable energy and battery storage affect electricity supply, demand and market prices.',
- 'Analyze how tariffs and consumption patterns affect costs, and evaluate how shifting demand can benefit consumers and the grid.',
- 'Evaluate how growing demand from AI and data centers affects electricity systems, including the economic and infrastructure challenges.'
-];
-const icons=['merit','load','duck','bills','growth'];
-$('#objectives').innerHTML=objectives.map((t,i)=>`<li>${glyph(icons[i],34,24,'var(--leaf)')}<span>${t}</span></li>`).join('');
-
 /* ---------- glyphs ---------- */
 function pathFrom(fn,w,h,pad){let d='';for(let i=0;i<=40;i++){const t=i/40;const X=pad+t*(w-2*pad);const Y=pad+(1-fn(t))*(h-2*pad);d+=(i?'L':'M')+X.toFixed(1)+' '+Y.toFixed(1);}return d;}
 function glyph(kind,w=64,h=36,col='currentColor'){
@@ -1006,33 +1042,6 @@ runGame();
 
 /* ---------- activity art ---------- */
 function svgCurve(svg,pts,stroke,w,dash){const d=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join('');svg.appendChild(el('path',{d,fill:'none',stroke,'stroke-width':w||2.2,'stroke-linejoin':'round','stroke-linecap':'round','stroke-dasharray':dash||'none'}));}
-(function(){const s=$('#art-adopt');const Wd=320,Hd=130;const pts=[];const pts2=[];
-  for(let i=0;i<=96;i++){const p=point(i/4,{solar:true,battery:false});const x=10+300*i/96;pts.push([x,118-p.net*3.4]);pts2.push([x,118-p.d*3.4]);}
-  const area='M'+pts.map(p=>p.join(' ')).join('L')+'L'+pts2.slice().reverse().map(p=>p.join(' ')).join('L')+'Z';
-  s.appendChild(el('path',{d:area,fill:css('--solar'),opacity:.55}));
-  svgCurve(s,pts2,css('--ink-dim'),1.3,'3 3');svgCurve(s,pts,css('--ink'),2.4);
-  const ann=[[13,'solar at noon'],[19.5,'evening peak']];
-  ann.forEach(([h,t])=>{const p=point(h,{solar:true,battery:false});const x=10+300*h/24,y=118-p.net*3.4;s.appendChild(el('circle',{cx:x,cy:y,r:4,fill:css('--night'),stroke:css('--ink'),'stroke-width':2}));s.appendChild(el('text',{x:x,y:h<15?y+20:y-10,'text-anchor':'middle',fill:css('--ink-dim'),'font-family':'Instrument Sans, sans-serif','font-size':11},t));});
-})();
-(function(){const s=$('#art-battery');const pts=[];
-  const pr=h=>40+28*Math.sin((h-15)/24*Math.PI*2)+35*G(h,19.5,1.4)-22*G(h,12.5,2.2)+30*G(h+24,19.5,1.4);
-  for(let i=0;i<=72;i++){const h=i/3;pts.push([10+300*i/72,110-pr(h%24)*0.95]);}
-  for(let i=0;i<24;i++){const p=pr(i+.5);const x=10+300*(i/24)+2;const ch=p<30,dis=p>80;if(!ch&&!dis)continue;const hh=ch?16:22;s.appendChild(el('rect',{x,y:ch?112:112-hh-2,width:300/24-4,height:hh,rx:2,fill:css('--battery'),opacity:ch?.4:.95}));}
-  svgCurve(s,pts,css('--peak'),2.2);
-  s.appendChild(el('text',{x:14,y:16,fill:css('--ink-dim'),'font-family':'Instrument Sans, sans-serif','font-size':11},'price'));
-  s.appendChild(el('text',{x:306,y:16,'text-anchor':'end',fill:css('--battery'),'font-family':'Instrument Sans, sans-serif','font-size':11},'charge low · sell high'));
-})();
-(function(){const s=$('#art-bills');
-  const x=h=>10+190*h/24;
-  s.appendChild(el('rect',{x:x(16),y:8,width:x(21)-x(16),height:104,fill:css('--peak'),opacity:.12}));
-  s.appendChild(el('text',{x:(x(16)+x(21))/2,y:20,'text-anchor':'middle',fill:css('--peak'),'font-family':'IBM Plex Mono, monospace','font-size':10},'PEAK'));
-  const A=[],Bp=[];for(let i=0;i<=48;i++){const h=i/2;A.push([x(h),110-(18+70*G(h,17,2.6))]);Bp.push([x(h),110-(18+38*G(h,11,3.4)+12*G(h,4,2))]);}
-  svgCurve(s,A,css('--solar'),2.4);svgCurve(s,Bp,css('--battery'),2.4);
-  s.appendChild(el('line',{x1:10,x2:200,y1:112,y2:112,stroke:css('--line')}));
-  const bar=(bx,h,col,lab,val)=>{s.appendChild(el('rect',{x:bx,y:112-h,width:36,height:h,rx:3,fill:col}));s.appendChild(el('text',{x:bx+18,y:126,'text-anchor':'middle',fill:css('--ink-dim'),'font-family':'Instrument Sans, sans-serif','font-size':10},lab));s.appendChild(el('text',{x:bx+18,y:112-h-6,'text-anchor':'middle',fill:css('--ink'),'font-family':'IBM Plex Mono, monospace','font-size':10},val));};
-  bar(222,84,css('--solar'),'Bldg A','$$$');bar(268,50,css('--battery'),'Bldg B','$$');
-})();
-
 /* ---------- speakers ---------- */
 const spk=[[2, "Inside Electricity Market Operations", "e.g., CAISO", "How the grid is managed in real time, and what operators do when demand or weather forecasts are wrong.", "merit", "--hydro"], [3, "Planning a Clean Electricity System", "e.g., E3, Google, Microsoft", "How planners and big clean-energy buyers balance cost and reliability, and what clean power every hour really takes.", "duck", "--solar"], [4, "Energy Storage in Practice", "e.g., Tesla Energy, Fluence", "How batteries are built, operated and connected to the grid, and what makes them valuable.", "battery", "--battery"], [5, "Demand Flexibility in Practice", "e.g., California DWR, Google Nest", "How water pumping, buildings and home thermostats can be scheduled around electricity prices.", "bills", "--wind"], [6, "Planning for a Reliable Grid", "e.g., CAISO, PG&E", "How the grid prepares for extreme weather, changing power sources and fast-growing demand.", "spike", "--nuclear"], [7, "Powering AI in Practice", "e.g., Google, Microsoft, NVIDIA", "How data centers secure electricity and manage costs, and how flexible AI workloads really are.", "growth", "--peak"]];
 $('#speakers-grid').innerHTML=spk.map(([w,t,o,d,gk,col])=>`<article class="spk"><div class="portrait">${portrait(w,col,gk)}<span class="wkb">Week ${w}</span><span class="inv">Invited</span></div><div class="body"><h3>${t}</h3><div class="orgs">${o}</div><p>${d}</p></div></article>`).join('');
